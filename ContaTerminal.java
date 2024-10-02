@@ -3,10 +3,12 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class ContaTerminal extends dadosUsuario {
+    static Scanner myObj = new Scanner(System.in);
+    static dadosUsuario usuario = new dadosUsuario();
+    
     public static void main(String[] args){
-        Scanner myObj = new Scanner(System.in);
-        dadosUsuario usuario = new dadosUsuario();
-
+        //Scanner myObj = new Scanner(System.in);
+        //dadosUsuario usuario = new dadosUsuario();
         boolean cond = true;
 
         while(cond){
@@ -15,15 +17,7 @@ public class ContaTerminal extends dadosUsuario {
 
             switch (menu) {
                 case "1":
-                    usuario.infos();
-                    System.out.println("Nome: " + usuario.getNome() + "\n" + "Agência: " + usuario.getAgencia() + "\n" + "Conta corrente: " + usuario.getContaCorrente());
-                    System.out.println("Confirma os dados acima?");
-                    String res = myObj.nextLine().toUpperCase();
-                    if(res.equals("S")){
-                        System.out.println("Conta acessada.");
-                    } else {
-                        System.out.println("Conta não acessada.");
-                    }
+                    accessUser();
                     break;
                 case "2":
                     System.out.println("Informe seu nome completo: ");
@@ -43,7 +37,7 @@ public class ContaTerminal extends dadosUsuario {
                         System.out.println("Dados não confirmados.");
                         break;
                     }
-                  
+
                     Random random = new Random();
                     long contaCorrenteGerada = (long) (random.nextDouble() * 1_000_000_0000L);
                     int agenciaGerada = 10000 + random.nextInt(90000);
@@ -51,14 +45,7 @@ public class ContaTerminal extends dadosUsuario {
                     System.out.println("Sua agência: " + agenciaGerada + "\n" + "Sua conta-corrente: " + contaCorrenteGerada);
                     break;
                 case "3":
-                    usuario.infos();
-                    System.out.println("Deseja realmente apagar sua conta?");
-                    String resp = myObj.nextLine().toUpperCase();
-                    if(resp.equals("S")){
-                        System.out.println("Conta excluída com sucesso.");
-                    } else {
-                        System.out.println("Sua conta não foi excluída.");
-                    }
+                    deleteContaUser();
                     break;
                 default:
                     System.out.println("Entrada inválida.");
@@ -71,6 +58,32 @@ public class ContaTerminal extends dadosUsuario {
             if (res.equals("N")) {
                 cond = false;
             }
+        }
+    }
+    public static void accessUser(){
+        usuario.infos();
+        System.out.println("Nome: " + usuario.getNome() + "\n" + "Agência: " + usuario.getAgencia() + "\n" + "Conta corrente: " + usuario.getContaCorrente());
+        System.out.println("Confirma os dados acima?");
+        String res = myObj.nextLine().toUpperCase();
+        if(res.equals("S")){
+            System.out.println("Conta acessada.");
+        } else {
+            System.out.println("Conta não acessada.");
+        }
+    }
+
+    public static void createContaUser(){
+        
+    }
+
+    public static void deleteContaUser(){
+        usuario.infos();
+        System.out.println("Deseja realmente apagar sua conta?");
+        String resp = myObj.nextLine().toUpperCase();
+        if(resp.equals("S")){
+            System.out.println("Conta excluída com sucesso.");
+        } else {
+            System.out.println("Sua conta não foi excluída.");
         }
     }
 }
