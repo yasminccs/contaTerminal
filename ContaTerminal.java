@@ -7,8 +7,6 @@ public class ContaTerminal extends dadosUsuario {
     static dadosUsuario usuario = new dadosUsuario();
     
     public static void main(String[] args){
-        //Scanner myObj = new Scanner(System.in);
-        //dadosUsuario usuario = new dadosUsuario();
         boolean cond = true;
 
         while(cond){
