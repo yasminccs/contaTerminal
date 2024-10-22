@@ -1,4 +1,4 @@
-package co.dio;
+package co.dio.projetoPessoaConta;
 import java.util.Scanner;
 import java.util.Random;
 
